@@ -12,16 +12,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expense Manager',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const OnboardingScreen(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const WelcomeScreen(),
     );
   }
 }
 
-class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,100 +27,76 @@ class OnboardingScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
           child: Column(
             children: [
               const Spacer(flex: 3),
-
               // Icon ví tiền
-              SizedBox(
-                width: 140,
-                height: 140,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // Thẻ xanh lá nhô lên phía sau
-                    Positioned(
-                      top: 10,
-                      child: Container(
-                        width: 90,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF7ED299),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 0),
+                    width: 70,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: Colors.green.shade400,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    // Thân ví màu xanh dương
-                    Positioned(
-                      bottom: 0,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 25),
+                    width: 100,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade600,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerRight,
                       child: Container(
-                        width: 130,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF2F6FED),
-                          borderRadius: BorderRadius.circular(20),
+                        margin: const EdgeInsets.only(right: 15),
+                        width: 22,
+                        height: 22,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
                         ),
-                        child: Stack(
-                          children: [
-                            // Nút tròn trắng (khóa ví)
-                            Positioned(
-                              right: 15,
-                              top: 35,
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Center(
-                                  child: Container(
-                                    width: 10,
-                                    height: 10,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFF2F6FED),
-                                      shape: BoxShape.circle,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                        child: Center(
+                          child: Container(
+                            width: 8,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: Colors.blue.shade600,
+                              shape: BoxShape.circle,
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-
               const SizedBox(height: 32),
-
-              // Tiêu đề
               const Text(
                 'Expense Manager',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF1B1B3A),
+                  color: Color(0xFF1A1F36),
                 ),
               ),
-
               const SizedBox(height: 12),
-
-              // Mô tả
-              const Text(
+              Text(
                 'Quản lý chi tiêu cá nhân\nđơn giản và hiệu quả',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.grey,
+                  color: Colors.grey.shade500,
+                  height: 1.4,
                 ),
               ),
-
               const Spacer(flex: 4),
-
-              // Nút Bắt đầu
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -133,22 +107,16 @@ class OnboardingScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF2F6FED),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(26),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    elevation: 0,
                   ),
                   child: const Text(
                     'Bắt đầu',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
-
-              const SizedBox(height: 40),
+              const SizedBox(height: 24),
             ],
           ),
         ),
